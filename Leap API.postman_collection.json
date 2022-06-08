@@ -1,0 +1,1534 @@
+{
+	"info": {
+		"_postman_id": "b7e9088b-3979-4043-9837-072752cde7e6",
+		"name": "Leap API",
+		"description": "The API enables users to provide grid services from their asset portfolio. Use these endpoints to monitor meter inventory, place bids and receive dispatches.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9021681"
+	},
+	"item": [
+		{
+			"name": "Log In",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"save token\", function () {",
+							"    var jsonData = pm.response.json()",
+							"    pm.expect(jsonData).to.have.own.property('token')",
+							"    pm.environment.set(\"token\", jsonData.token)",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"{{email}}\",\n\t\"password\":\"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"login"
+					]
+				},
+				"description": "Login with email / password and receive a token which is required in subsequent requests.\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Meters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"save first Meter Id\", function () {",
+							"    var jsonData = pm.response.json();    ",
+							"    pm.environment.set(\"meterId\", jsonData.results[0].meter_id);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"date_added_from\": \"2021-01-12T21:12:46.784Z\",\n \"date_added_to\": \"2021-05-25T21:12:46.784Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/meters/search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"meters",
+						"search"
+					]
+				},
+				"description": "Search meters on your account. Returns all meters by default.\n\n**Request parameters (JSON)**\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>date_added_from\n   </td>\n   <td>Datetime\n   </td>\n   <td>Returns only meters that have been added from this date (inclusive)\n   </td>\n  </tr>\n  <tr>\n   <td>date_added_to\n   </td>\n   <td>Datetime\n   </td>\n   <td>Returns only meters that have been added to this date (inclusive)\n   </td>\n  </tr>\n  <tr>\n   <td>page_token\n   </td>\n   <td>String\n   </td>\n   <td>Token of the page to request\n<p>\nNull to request a new batch of results\n   </td>\n  </tr>\n</table>\n\n**Response Information**\n<table>\n<tbody>\n<tr>\n<td>\n<p><strong>Field</strong></p>\n</td>\n<td>\n<p><strong>Type</strong></p>\n</td>\n<td>\n<p><strong>Comment</strong></p>\n</td>\n</tr>\n<tr>\n<td>\n<p>next_page_token</p>\n</td>\n<td>\n<p>String</p>\n</td>\n<td>\n<p>Token to be used in a subsequent request to get the next batch of results.</p>\n<p>Null when the last page of results has been reached</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>results</p>\n</td>\n<td>\n<p>List[<u>Meter</u>]</p>\n</td>\n<td>\n<p>A list of meters</p>\n</td>\n</tr>\n</tbody>\n</table>"
+			},
+			"response": [
+				{
+					"name": "Search Meters",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"date_added_from\": \"2021-01-12T21:12:46.784Z\",\n \"date_added_to\": \"2021-05-25T21:12:46.784Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/meters/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"meters",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Jun 2021 08:32:16 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2123"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "server",
+							"value": "Jetty(9.4.38.v20210224)"
+						},
+						{
+							"key": "apigw-requestid",
+							"value": "ASdCjgruSK4EMvw="
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding, User-Agent"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "expires",
+							"value": "0"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "DENY"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"next_page_token\": null,\n    \"results\": [\n        {\n            \"meter_id\": \"f5bfd5fa-87fd-444b-98ad-bef6cdbd5c59\",\n            \"partner_reference\": \"meter1\",\n            \"transmission_region\": \"CAISO\",\n            \"utility\": \"SCE\",\n            \"load_serving_entity\": \"lse\",\n            \"participation\": [],\n            \"load_zone\": \"lap\",\n            \"service_point_number\": \"SAN-4693158213\",\n            \"customer_name\": \"Aaron Murphy\",\n            \"service_address_full\": \"658nd Street, 65247 Eyver, California, US\",\n            \"service_address\": {\n                \"street_1\": \"658nd Street\",\n                \"street_2\": null,\n                \"postal_code\": \"65247\",\n                \"city\": \"Eyver\",\n                \"state_or_province\": \"California\",\n                \"country\": \"US\"\n            },\n            \"enrollment\": {\n                \"status\": \"Eligible\",\n                \"active_from\": null,\n                \"active_to\": null,\n                \"eligible_from\": \"2021-05-19T07:00:00Z\",\n                \"eligible_to\": \"2029-01-02T08:00:00Z\",\n                \"status_reasons\": [],\n                \"partner_preferred_action\": \"Idle\",\n                \"partner_indicated_idle_period\": {\n                    \"from\": \"2021-10-10T07:00:00Z\",\n                    \"to\": \"2022-05-10T07:00:00Z\",\n                    \"reasons\": []\n                },\n                \"partner_indicated_disenrollment\": null\n            },\n            \"created_at\": \"2021-05-19T12:54:17.224155Z\",\n            \"tariff\": \"TOUD-4-9PM-SDP-O\"\n        },\n        {\n            \"meter_id\": \"a2d57094-d143-40b3-9752-5a579302041c\",\n            \"partner_reference\": \"meter2\",\n            \"transmission_region\": \"CAISO\",\n            \"utility\": \"SCE\",\n            \"load_serving_entity\": \"lse\",\n            \"participation\": [\n                {\n                    \"market_group_id\": \"e7cd2ea8-8c3d-463c-806b-790f0463daed\",\n                    \"trade_date\": \"2021-06-02T07:00:00Z\"\n                },\n                {\n                    \"market_group_id\": \"e7cd2ea8-8c3d-463c-806b-790f0463daed\",\n                    \"trade_date\": \"2021-06-03T07:00:00Z\"\n                },\n                {\n                    \"market_group_id\": \"e7cd2ea8-8c3d-463c-806b-790f0463daed\",\n                    \"trade_date\": \"2021-06-04T07:00:00Z\"\n                }\n            ],\n            \"load_zone\": \"lap\",\n            \"service_point_number\": \"SAN-3641394210\",\n            \"customer_name\": \"Evelyn Perry\",\n            \"service_address_full\": \"23nd Avenue, 68921 Kriarsea, California, US\",\n            \"service_address\": {\n                \"street_1\": \"23nd Avenue\",\n                \"street_2\": null,\n                \"postal_code\": \"68921\",\n                \"city\": \"Kriarsea\",\n                \"state_or_province\": \"California\",\n                \"country\": \"US\"\n            },\n            \"enrollment\": {\n                \"status\": \"Active\",\n                \"active_from\": \"2021-05-19T07:00:00Z\",\n                \"active_to\": \"2021-12-31T08:00:00Z\",\n                \"eligible_from\": \"2021-05-19T07:00:00Z\",\n                \"eligible_to\": \"2029-01-02T08:00:00Z\",\n                \"status_reasons\": [],\n                \"partner_preferred_action\": \"Enroll\",\n                \"partner_indicated_idle_period\": null,\n                \"partner_indicated_disenrollment\": null\n            },\n            \"created_at\": \"2021-05-19T12:54:13.380135Z\",\n            \"tariff\": \"HETOUC\"\n        }       \n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Meter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"save Meter Id\", function () {",
+							"    var jsonData = pm.response.json();    ",
+							"    pm.environment.set(\"meterId\", jsonData.meter_id);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/meter/{{meterId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"meter",
+						"{{meterId}}"
+					]
+				},
+				"description": "**Response**\n\n**Meter object**\n\n<table><tbody><tr><td><b>Field</b><br></td><td><b>Type</b><br></td><td><b>Comment</b><br></td></tr><tr><td>meter_id<br></td><td>UUID<br></td><td>The id of the meter as known to Leap<br></td></tr><tr><td>partner_reference<br></td><td>String<br></td><td>Custom reference that the partner has for this meter<br></td></tr><tr><td>transmission_region<br></td><td>Enum<br></td><td><p>Region managing a high-voltage electric system. In Leap’s system this also refers to an organized wholesale electricity market operator.<br></p><p><br>Supported values:<br></p><p>* CAISO<br></p><p>* ERCOT<br></p></td></tr><tr><td>utility<br></td><td>Enum<br></td><td><p>Organization maintaining the low-voltage lines, wires and meters delivering electric service to end customer facilities.<br></p><p><br>Supported values for CAISO:<br></p><p><br>* PGE for Pacific Gas &amp; Electric<br></p><p><br>* SCE for Southern California Edison<br></p><p><br>* SDGE for San Diego Gas &amp; Electric<br></p></td></tr><tr><td>load_serving_entity<br></td><td>String<br></td><td><p>Organization responsible for procuring load on behalf of this meter in the wholesale market. In California (CAISO) this is either the Utility, a Municipality or a Community Choice Aggregator. In Texas (ERCOT) this is the Retail Energy Provider.<br></p><p><br>For some extremely large customers this is a `direct_access` buyer that procures on their own behalf.<br></p><p><br>In <b>CAISO</b> this returns the LSE IDs as known to CAISO<br></p><p><br>In <b>ERCOT</b> this returns one of the following values:<br></p><p><br>* NRG for NRG Energy<br></p></td></tr><tr><td>participation<br></td><td>List[Participation]<br></td><td><br></td></tr><tr><td>load_zone<br></td><td>String<br></td><td><p>The regional aggregation wherein meters can be assigned to a Resource.<br></p><p><br>Within <b>CAISO</b> this is also referred to as the SubLAP<br></p><p><br>Within <b>ERCOT</b> this is also referred to as the Load Zone<br></p></td></tr><tr><td>service_point_number<br></td><td><br></td><td><p>Identifier for the service delivery point<br></p><p><br>For <b>CAISO</b> this is the _Service Account Number (SAN)_<br></p><p><br>For <b>ERCOT</b> this is the _ESI-ID_<br></p></td></tr><tr><td>customer_name<br></td><td>String<br></td><td>The name of the owner of this meter, as given by the utility<br></td></tr><tr><td>service_address_full<br></td><td>String<br></td><td>The full address in one line for quick identification / comparison<br></td></tr><tr><td>service_address<br></td><td>Address<br></td><td>The address of the meter<br></td></tr><tr><td>enrollment<br></td><td>Enrollment<br></td><td>Section describing the enrollment status and details for this meter<br></td></tr><tr><td>created_at<br></td><td>Datetime<br></td><td>The timestamp on which this meter record was first created in Leap’s database.<br></td></tr><tr><td>tariff<br></td><td>String<br></td><td>Tariff code indicating the rate of the service agreement between the utility and end-customer.<br></td></tr></tbody></table>\n\n**Enrollment object**\n\n<table><tbody><tr><td><p><b>Field</b></p></td><td><p><b>Type</b></p></td><td><p><b>Comment</b></p></td></tr><tr><td><p>status</p></td><td><p>Enum</p></td><td><p>The current enrollment status of this meter. This is due to change over time.</p><p><b>Supported statuses:</b></p><ul><li><p><b>Pending </b>Meter metadata is still being collected</p></li><li><p><b>ActionRequired </b>The meter registration with the market<br>was rejected and requires (manual) action to proceed. See the<i><br>status_reasons </i>field for more details</p></li><li><p><b>Eligible </b>The meter is ready to participate in the<br>market but currently not within an active<br>Resource</p></li><li><p><b>Active </b>The meter is currently in an Active<br>resource and can be used for bidding and is expected to be able to receive dispatch signals</p></li><li><p><b>Withdrawn </b>The meter has been taken off the market and will not get enrolled. See the <i>status_reasons </i>field for more details.</p></li></ul></td></tr><tr><td><p>status_reasons</p></td><td><p>Array[Reason]</p></td><td><p>A list with Reason objects indicating why this meter is in the <b>Action Required </b>or <b>Withdrawn </b>status.</p><p>This list is expected to be empty otherwise. See the reason section for more details</p></td></tr><tr><td><p>eligible_from</p></td><td><p>Datetime</p></td><td><p>If the meter is in the <b>Eligible </b>or<b> Active </b>status this will show the date when the meter first became Eligible</p><p>For all other statuses this field will only contain the date on which the meter will reach the <b>Eligible </b>status.</p><p>This field remains blank if no start date for the Eligible status can be determined</p></td></tr><tr><td><p>eligible_to</p></td><td><p>Datetime</p></td><td><p>If the meter is in the <b>Eligible </b>or <b>Active </b>status this will show until when the meter will be Eligible for market participation.&nbsp;</p><p>The list with <i>status_reasons </i>shows why the meter will no longer be eligible after this date.</p></td></tr><tr><td><p>active_from</p></td><td><p>Datetime</p></td><td><p>If the meter has an <b>Eligible </b>status and is expected to become active then this field will show the timestamp from which this meter will have the <b>Active </b>status.<br></p><p>If the meter has an <b>Active </b>status then this field will show from which timestamp this meter is in the Active status.</p><p><b>Note: </b>bids on this meter can be accepted in both the Eligible as Active status as long the bid has a timestamp later than the timestamp of this field.</p></td></tr><tr><td><p>active_to</p></td><td><p>Datetime</p></td><td><p>Holds the timestamp after which this meter will no longer be in the <b>Active </b>status.</p></td></tr><tr><td><p>partner_preferred_action</p></td><td><p>Enum</p></td><td><p>Indicated action for current period, it describes whether you are able and willing to enroll this meter.</p><p><b>Supported actions:</b></p><ul><li><p><b>Participate</b> - Meter can participate in Leap programs. This is the default action for a meter.</p></li><li><p><b>Idle</b> - During an idle period the meter can be enrolled but it doesn’t participate to any Leap program.</p></li><li><p><b>Disenroll</b> - Meter is permanently disenrolled. A request to disenroll the meter was initiated by you and approved by Leap.</p></li></ul></td></tr><tr><td><p>partner_indicated_idle_period</p></td><td><p>PartnerIndicatedIdlePeriod</p></td><td><p>Contains details about the soonest idle period for a meter. This field remains blank when no current or future idle periods are found for the meter.</p></td></tr><tr><td><p>partner_indicated_disenrollment</p></td><td><p>PartnerIndicatedDisenrollment</p></td><td><p>Contains details about the permanent disenrollment of a meter. This field remains blank when no approved disenrollment requests are found for the meter.</p></td></tr></tbody></table>\n\n**PartnerIndicatedIdlePeriod object**\n\n<table><tbody><tr><td><p><b>Field</b></p></td><td><p><b>Type</b></p></td><td><p><b>Comment</b></p></td></tr><tr><td><p>from</p></td><td><p>Datetime</p></td><td><p>The start time of the soonest idle period. If the meter is currently idle, this property shows when the meter became idle.</p></td></tr><tr><td><p>to</p></td><td><p>Datetime</p></td><td><p>The end time of the soonest idle period.</p></td></tr><tr><td><p>reasons</p></td><td><p>Array[Reason]</p></td><td><p>Reasons set by you why this meter should be idle during the period limited by <b>from</b> and <b>to</b> fields.</p></td></tr></tbody></table>\n\n**PartnerIndicatedDisenrollment object**\n\n<table><tbody><tr><td><p><b>Field</b></p></td><td><p><b>Type</b></p></td><td><p><b>Comment</b></p></td></tr><tr><td><p>from</p></td><td><p>Datetime</p></td><td><p>The time when you want the meter to be disenrolled. If the meter is currently disenrolled, this property shows when the meter was disenrolled.</p></td></tr><tr><td><p>reasons</p></td><td><p>Array[Reason]</p></td><td><p>Reasons set by you why this meter should be disenrolled.</p></td></tr></tbody></table>\n\n**Reason object**\n\n<table><tbody><tr><td><p><b>Field</b></p></td><td><p><b>Type</b></p></td><td><p><b>Comment</b></p></td></tr><tr><td><p>code</p></td><td><p>Enum</p></td><td><p>The reason code mentioning why a meter has a specific status.</p></td></tr><tr><td><p>comment</p></td><td><p>String</p></td><td><p>Human-readable description of the reason containing more detailed information</p></td></tr></tbody></table>"
+			},
+			"response": [
+				{
+					"name": "Get Meter",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/meter/{{meterId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"meter",
+								"{{meterId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Jun 2021 09:05:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "504"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "server",
+							"value": "Jetty(9.4.38.v20210224)"
+						},
+						{
+							"key": "apigw-requestid",
+							"value": "ASh7HhGuSK4EMgg="
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding, User-Agent"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "expires",
+							"value": "0"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "DENY"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meter_id\": \"afce893d-ea68-487f-9f8c-778b1881f60a\",\n    \"partner_reference\": \"meter1\",\n    \"transmission_region\": \"CAISO\",\n    \"utility\": \"SCE\",\n    \"load_serving_entity\": \"lse\",\n    \"participation\": [\n        {\n            \"market_group_id\": \"959b2bfb-ec22-4fdf-be54-173639c4e925\",\n            \"trade_date\": \"2021-06-02T07:00:00Z\"\n        },\n        {\n            \"market_group_id\": \"959b2bfb-ec22-4fdf-be54-173639c4e925\",\n            \"trade_date\": \"2021-06-03T07:00:00Z\"\n        },\n        {\n            \"market_group_id\": \"959b2bfb-ec22-4fdf-be54-173639c4e925\",\n            \"trade_date\": \"2021-06-04T07:00:00Z\"\n        }\n    ],\n    \"load_zone\": \"lap\",\n    \"service_point_number\": \"SAN-0250508399\",\n    \"customer_name\": \"Andrea Morris\",\n    \"service_address_full\": \"914nd Street, 42908 Seah, California, US\",\n    \"service_address\": {\n        \"street_1\": \"914nd Street\",\n        \"street_2\": null,\n        \"postal_code\": \"42908\",\n        \"city\": \"Seah\",\n        \"state_or_province\": \"California\",\n        \"country\": \"US\"\n    },\n    \"enrollment\": {\n        \"status\": \"Active\",\n        \"active_from\": \"2021-05-19T07:00:00Z\",\n        \"active_to\": \"2021-12-31T08:00:00Z\",\n        \"eligible_from\": \"2021-05-19T07:00:00Z\",\n        \"eligible_to\": \"2029-01-02T08:00:00Z\",\n        \"status_reasons\": [],\n        \"partner_preferred_action\": \"Enroll\",\n        \"partner_indicated_idle_period\": {\n            \"from\": \"2022-05-10T07:00:00Z\",\n            \"to\": \"2022-05-30T07:00:00Z\",\n            \"reasons\": []\n        },\n        \"partner_indicated_disenrollment\": {\n            \"from\": \"2022-07-01T07:00:00Z\",\n            \"reasons\": [\n                {\n                    \"code\": \"PART_0001\",\n                    \"comment\": \"The Meter is not assigned to participate in the energy market\"\n                }\n            ]   \n        }\n    },\n    \"created_at\": \"2021-05-19T12:54:09.99249Z\",\n    \"tariff\": \"HETOUC\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Search Standing Bids",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"next_page_token\": \"\",\n  \"start_date\": \"2021-05-18T08:00:00Z\",\n  \"end_date\": \"2021-12-31T08:00:00Z\",\n  \"meter_ids\": [\n    \"{{meterId}}\"\n  ]\n}\n"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/standing_bids/search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"standing_bids",
+						"search"
+					]
+				},
+				"description": "Returns information about the standing bids that have been placed.\n\n**Request parameters**\n\n\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>start_date*\n   </td>\n   <td>Datetime\n   </td>\n   <td>Start datetime range to get standing bids for (inclusive)\n   </td>\n  </tr>\n  <tr>\n   <td>end_date*\n   </td>\n   <td>Datetime\n   </td>\n   <td>End datetime range to get standing bids for (inclusive)\n   </td>\n  </tr>\n  <tr>\n   <td>meter_ids\n   </td>\n   <td>List[UUID]\n   </td>\n   <td>Meter ids to get bids for\n<p>\nLimited at 100 meters per request\n   </td>\n  </tr>\n  <tr>\n   <td>page_token\n   </td>\n   <td>String\n   </td>\n   <td>Token of the page to request\n<p>\nNull to request a new batch of results\n   </td>\n  </tr>\n</table>\n\n**Response**\n<table cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td>\n<p><strong>Field</strong></p>\n</td>\n<td>\n<p><strong>Type</strong></p>\n</td>\n<td>\n<p><strong>Comment</strong></p>\n</td>\n</tr>\n<tr>\n<td>\n<p>next_page_token</p>\n</td>\n<td>\n<p>String</p>\n</td>\n<td>\n<p>Token to be used in a subsequent request to get the next batch of results.</p>\n<p>Null when the last page of results has been reached</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>results</p>\n</td>\n<td>\n<p>List[StandingBid]</p>\n</td>\n<td>\n<p>A list with the meters, their bids, and status.</p>\n<p>Contents are the same as the response of the <em>place standing bids API call</em></p>\n</td>\n</tr>\n</tbody>\n</table>"
+			},
+			"response": [
+				{
+					"name": "Search Standing Bids",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"next_page_token\": \"\",\n  \"start_date\": \"2021-05-18T08:00:00Z\",\n  \"end_date\": \"2021-12-31T08:00:00Z\",\n  \"meter_ids\": [\n    \"{{meterId}}\"\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/standing_bids/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"standing_bids",
+								"search"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"next_page_token\": \"NzBjNzU1ZWQtMzM5NC00YmIwLTkwZDAtZDMzN2IyZmZiNTNi\",\n    \"results\": [\n        {\n            \"meter_id\": \"0b8894b3-5b27-48ff-a23f-bced0d137ffa\",\n            \"start_time\": \"2021-06-01T07:00:00Z\",\n            \"end_time\": \"2021-06-30T07:00:00Z\",\n            \"day_type\": \"business\",\n            \"hours\": [\n                {\n                    \"hour_ending\": 19,\n                    \"curve\": [\n                        {\n                            \"quantity_in_kw\": 15,\n                            \"price\": 0.1\n                        }\n                    ]\n                },\n                {\n                    \"hour_ending\": 20,\n                    \"curve\": [\n                        {\n                            \"quantity_in_kw\": 15,\n                            \"price\": 0.1\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"meter_id\": \"0b8894b3-5b27-48ff-a23f-bced0d137ffa\",\n            \"start_time\": \"2021-07-01T07:00:00Z\",\n            \"end_time\": \"2021-07-31T07:00:00Z\",\n            \"day_type\": \"business\",\n            \"hours\": [\n                {\n                    \"hour_ending\": 19,\n                    \"curve\": [\n                        {\n                            \"quantity_in_kw\": 18,\n                            \"price\": 0.15\n                        }\n                    ]\n                },\n                {\n                    \"hour_ending\": 20,\n                    \"curve\": [\n                        {\n                            \"quantity_in_kw\": 18,\n                            \"price\": 0.15\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Place Standing Bid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"standing_bids\": [\n   {\n     \"meter_id\": \"{{meterId}}\",\n     \"start_time\": \"2021-05-30T18:00:00Z\",\n     \"end_time\": \"2021-07-01T18:00:00Z\",\n     \"day_type\": \"business\",\n     \"hours\": [\n       {\n         \"hour_ending\": 17,\n         \"curve\": [\n           {\n             \"quantity_in_kw\": 5,\n             \"price\": 0.7\n           },\n           {\n             \"quantity_in_kw\": 50,\n             \"price\": 0.95\n           }\n         ]\n       },\n       {\n         \"hour_ending\": 18,\n         \"curve\": [\n           {\n             \"quantity_in_kw\": 9,\n             \"price\": 0.9\n           },\n           {\n             \"quantity_in_kw\": 75,\n             \"price\": 0.95\n           }\n         ]\n       }\n     ]\n   }\n ]\n}\n"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/standing_bid",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"standing_bid"
+					]
+				},
+				"description": "Use standing bids to schedule consistent bidding activity over a period of time (e.g. month, year, week).\n\nBy placing a standing bid, the system repeats bids on a defined schedule. Standing bids will be submitted to the market one day before the trading day. After processing, bids that are placed here will be visible in the Search Bids endpoint.\n\n## Datetimes and Hour Ending:\nDatetimes reflect a start and end to the bidding interval in Coordinated Universal Time (UTC). \n\n`hour_ending` denotes the time at the end of a bidding hour (`\"hour_ending\": 16` denotes a bid from 15:00 to 16:00)\n\n## Overwriting standing bids\nCancel or overwrite an existing standing bid by submitting a new curve for the same meter in an overlapping time period.\n- An empty curve will cancel the bid for that period\n- A new bid curve will overwrite the bid for that period\n\n\n**Root element information**\n\n\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>standing_bids*\n   </td>\n   <td>Array[StandingBid]\n   </td>\n   <td>A list with StandingBid objects. See the table below for information about the structure of a StandingBid object.\n   </td>\n  </tr>\n</table>\n\n\n**StandingBid object information**\n\n\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>meter_id*\n   </td>\n   <td>String\n   </td>\n   <td>Specifies the meter for which the bid is placed\n   </td>\n  </tr>\n  <tr>\n   <td>start_time*\n   </td>\n   <td>Datetime\n   </td>\n   <td>The start time when the standing bid should be active in UTC timezone\n   </td>\n  </tr>\n  <tr>\n   <td>end_time*\n   </td>\n   <td>Datetime\n   </td>\n   <td>The end time when the standing bid should be active in UTC timezone\n   </td>\n  </tr>\n  <tr>\n   <td>day_type*\n   </td>\n   <td>Enum\n   </td>\n   <td>This can have the value ‘business’ or ‘non_business’. Non-business days are weekend days and federal holidays.\n   </td>\n  </tr>\n  <tr>\n   <td>hours*\n   </td>\n   <td>Array[StandingBidHour]\n   </td>\n   <td>A list of standing bid hour specifications, see table below\n   </td>\n  </tr>\n</table>\n\n\n**StandingBidHour information**\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>hour_ending*\n   </td>\n   <td>Int\n   </td>\n   <td>The ‘hour ending’ of the bid interval to be placed in local time\n   </td>\n  </tr>\n  <tr>\n   <td>curve\n   </td>\n   <td>Array[BidCurve]\n   </td>\n   <td>A list of price points, see table below\n<p>\nProvide an empty list or null value to delete an existing bid\n   </td>\n  </tr>\n</table>\n\n\n**BidCurve information**\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>quantity_in_kw*\n   </td>\n   <td>Float\n   </td>\n   <td>The amount of the price point\n<p>\nThe quantity must be specified in kW\n   </td>\n  </tr>\n  <tr>\n   <td>price*\n   </td>\n   <td>Float\n   </td>\n   <td>The price of the price point in $/kWh\n   </td>\n  </tr>\n</table>"
+			},
+			"response": [
+				{
+					"name": "Place Standing Bid",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"standing_bids\": [\n   {\n     \"meter_id\": \"{{meterId}}\",\n     \"start_time\": \"2021-09-01T07:00:00Z\",\n     \"end_time\": \"2021-10-01T07:00:00Z\",\n     \"day_type\": \"business\",\n     \"hours\": [\n       {\n         \"hour_ending\": 17,\n         \"curve\": [\n           {\n             \"quantity_in_kw\": 5,\n             \"price\": 0.7\n           },\n           {\n             \"quantity_in_kw\": 50,\n             \"price\": 0.95\n           }\n         ]\n       },\n       {\n         \"hour_ending\": 18,\n         \"curve\": [\n           {\n             \"quantity_in_kw\": 9,\n             \"price\": 0.9\n           },\n           {\n             \"quantity_in_kw\": 75,\n             \"price\": 0.95\n           }\n         ]\n       }\n     ]\n   }\n ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/standing_bid",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"standing_bid"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"validations\": [],\n    \"stored\": [\n        {\n            \"meter_id\": \"{{meterId}}\",\n            \"start_time\": \"2021-09-01T07:00:00Z\",\n            \"end_time\": \"2021-10-01T07:00:00Z\",\n            \"day_type\": \"business\",\n            \"hours\": [\n                {\n                    \"hour_ending\": 17,\n                    \"curve\": [\n                        {\n                            \"quantity_in_kw\": 5,\n                            \"price\": 0.7\n                        },\n                        {\n                            \"quantity_in_kw\": 50,\n                            \"price\": 0.95\n                        }\n                    ]\n                },\n                {\n                    \"hour_ending\": 18,\n                    \"curve\": [\n                        {\n                            \"quantity_in_kw\": 9,\n                            \"price\": 0.9\n                        },\n                        {\n                            \"quantity_in_kw\": 75,\n                            \"price\": 0.95\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"deleted\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Place Bid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"currency\": \"USD\",\n  \"bids\": [\n    {\n      \"meter_id\": \"{{meterId}}\",\n      \"timeslots\": [\n        {\n          \"start_time\": \"2021-07-19T01:00:00Z\",\n          \"end_time\": \"2021-07-19T02:00:00Z\",\n          \"curve\": [\n            {\n              \"quantity_in_kw\": 100,\n              \"price\": 1\n            }\n          ]\n        },\n        {\n          \"start_time\": \"2021-07-19T02:00:00Z\",\n          \"end_time\": \"2021-07-19T03:00:00Z\",\n          \"curve\": [\n            {\n              \"quantity_in_kw\": 100,\n              \"price\": 1\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/bid",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"bid"
+					]
+				},
+				"description": "Bids are sets of pairs (Price, Capacity) from which a bid curve is constructed. The bid curve is the function of the form Price = F(Capacity) which determines at which price a demand response provider is willing to curtail a certain volume of load. \n\nInitial bids must be placed at least 24 hours before the start of the trading day. \n\nExample: A storage provider is bidding in capacity. A sample bid for a given hour may have the form shown in the table below: \n\n| Price ($/kWh)| 0.18 | 0.24 | 0.28 | 0.34 | 0.45 |\n| -------------| ---- | ---- | ---- | ---- | ---- |\n| Capacity     | 40   | 80   | 200  | 400  | 600  |\n\nAccording to this bid, the provider is willing to curtail the first 40kW of load for 18 cents per kWh. If a greater volume is needed, the same provider is willing to curtail any amount of energy from zero up to 80 kW at $0.24/kWh, up to 200 kW for $0.28/kWh, up to 400 kW for $0.34/kWh and up to 600 kW for $0.45/kWh. \n\nBid quantities have a minimum granularity of 1kW. Bids of 1.5kW for instance will be rejected. Only values that are a multiple of 1 will be accepted.\n\n\n## General guidelines:\nAll datetimes must be provided in the UTC timezone\n\n## Modifying bids\nBids can be modified by placing a new bid for the same meter/timeslot combination. The previous curve will be completely replaced by the new curve.\n\n## Cancelling bids\nA bid can be cancelled until the market closes. Cancel a bid by submitting an empty curve for a meter/timeslot combination.\n\n# Response information\n\n* HTTP 202 all bids have been accepted to be processed asynchronously\n* HTTP 412 in case of validation errors, none of the bids will be processed\n\nSuccessful responses will return a copy of the JSON objects provided in the request. Each point in the curve will contain an additional status field indicating if the bid has been received, accepted or rejected.\n\n## Possible bid statuses:\nReceived - Bid has been received by DEX,  but still has to be validated\nAccepted - Bid has been accepted for processing by the market\nRejected - Bid has not been accepted by the market\nError - An unforeseen case occurred, theoretically bids will never enter this state\n\n## Possible market statuses:\nOpen - Market is open and accepting new bids, Accepted and Rejected bids can still be updated\nProcessing - Market is closed and processing bids\nClosed - Market is closed and finished processing, potential dispatches are available through the get dispatches API call (1.5 Get dispatches)\n\n*Note*: on a successful bid a HTTP 202 response is explicitly returned to indicate that the bid still has to be processed by our market. The response only indicates that the bid is placed in the queue to be processed as soon as possible. This can take several minutes until the bid with actual status will be visible in the get bids API call."
+			},
+			"response": [
+				{
+					"name": "Place Bid",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"currency\": \"USD\",\n  \"bids\": [\n    {\n      \"meter_id\": \"{{meterId}}\",\n      \"timeslots\": [\n        {\n          \"start_time\": \"2021-06-07T01:00:00Z\",\n          \"end_time\": \"2021-06-07T02:00:00Z\",\n          \"curve\": [\n            {\n              \"quantity_in_kw\": 100,\n              \"price_per_kwh\": 1\n            }\n          ]\n        },\n        {\n          \"start_time\": \"2021-06-07T02:00:00Z\",\n          \"end_time\": \"2021-06-07T03:00:00Z\",\n          \"curve\": [\n            {\n              \"quantity_in_kw\": 100,\n              \"price_per_kwh\": 1\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/bid",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"bid"
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Jun 2021 09:08:29 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "233"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "server",
+							"value": "Jetty(9.4.38.v20210224)"
+						},
+						{
+							"key": "apigw-requestid",
+							"value": "ASiV1gZuyK4EMDQ="
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding, User-Agent"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "expires",
+							"value": "0"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "DENY"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"validations\": [],\n    \"currency\": \"USD\",\n    \"results\": [\n        {\n            \"meter_id\": \"afce893d-ea68-487f-9f8c-778b1881f60a\",\n            \"timeslots\": [\n                {\n                    \"start_time\": \"2021-06-07T02:00:00Z\",\n                    \"end_time\": \"2021-06-07T03:00:00Z\",\n                    \"curve\": [\n                        {\n                            \"quantity_in_kw\": 100,\n                            \"price\": 1\n                        }\n                    ],\n                    \"version\": 1,\n                    \"bid_status\": \"Accepted\",\n                    \"market_status\": \"Open\"\n                },\n                {\n                    \"start_time\": \"2021-06-07T01:00:00Z\",\n                    \"end_time\": \"2021-06-07T02:00:00Z\",\n                    \"curve\": [\n                        {\n                            \"quantity_in_kw\": 100,\n                            \"price\": 1\n                        }\n                    ],\n                    \"version\": 1,\n                    \"bid_status\": \"Accepted\",\n                    \"market_status\": \"Open\"\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Search Bids",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"start_date\": \"2021-01-01T00:00:00Z\",\n    \"end_date\": \"2021-01-02T00:00:00Z\",\n    \"meter_ids\": [\n        \"{{meterId}}\"        \n    ]\n}"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/bids/search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"bids",
+						"search"
+					]
+				},
+				"description": "Search between start_date and end_date for a list of meters identified by meter_id in meter_ids.\n\nA start and end date must be specified when requesting bids. The maximum timespan for a single request is 24 hours.\n\n**Request parameters (JSON)**\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>start_date*\n   </td>\n   <td>Datetime\n   </td>\n   <td>Start datetime range to get bids for (inclusive)\n   </td>\n  </tr>\n  <tr>\n   <td>end_date*\n   </td>\n   <td>Datetime\n   </td>\n   <td>End datetime range to get bids for (inclusive)\n<p>\nEnd date must be max 24 hours after the start date\n   </td>\n  </tr>\n  <tr>\n   <td>meter_ids\n   </td>\n   <td>List[UUID]\n   </td>\n   <td>Meter ids to get bids for\n<p>\nLimited at 100 meters per request\n   </td>\n  </tr>\n  <tr>\n   <td>page_token\n   </td>\n   <td>String\n   </td>\n   <td>Token of the page to request\n<p>\nNull to request a new batch of results\n   </td>\n  </tr>\n</table>\n\n**Response object**\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>next_page_token\n   </td>\n   <td>String\n   </td>\n   <td>Token to be used in a subsequent request to get the next batch of results.\n<p>\nNull when the last page of results has been reached\n   </td>\n  </tr>\n  <tr>\n   <td>results\n   </td>\n   <td>List[Bid]\n   </td>\n   <td>A list with the meters, their bids, and status.\n<p>\nContents are the same as the response of the place bids API call\n   </td>\n  </tr>\n</table>"
+			},
+			"response": [
+				{
+					"name": "Search Bids",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"start_date\": \"2021-01-01T00:00:00Z\",\n    \"end_date\": \"2022-01-02T00:00:00Z\",\n    \"meter_ids\": [\n        \"{{meterId}}\"        \n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/bids/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"bids",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Jun 2021 09:09:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "339"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "server",
+							"value": "Jetty(9.4.38.v20210224)"
+						},
+						{
+							"key": "apigw-requestid",
+							"value": "ASibSjnhyK4EM5w="
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding, User-Agent"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "expires",
+							"value": "0"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "DENY"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"next_page_token\": null,\n    \"results\": [\n        {\n            \"meter_id\": \"afce893d-ea68-487f-9f8c-778b1881f60a\",\n            \"timeslots\": [\n                {\n                    \"start_time\": \"2021-05-21T01:00:00Z\",\n                    \"end_time\": \"2021-05-21T02:00:00Z\",\n                    \"latest_version\": 1,\n                    \"market_status\": \"Unknown\",\n                    \"versions\": [\n                        {\n                            \"key\": 1,\n                            \"value\": {\n                                \"date_received\": \"2021-05-19T13:01:10.688749Z\",\n                                \"latest_state_change\": \"2021-05-19T13:01:10.688749Z\",\n                                \"status\": \"Accepted\",\n                                \"curve\": [\n                                    {\n                                        \"quantity_in_kw\": 100,\n                                        \"price\": 1\n                                    }\n                                ]\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"start_time\": \"2021-05-21T02:00:00Z\",\n                    \"end_time\": \"2021-05-21T03:00:00Z\",\n                    \"latest_version\": 1,\n                    \"market_status\": \"Unknown\",\n                    \"versions\": [\n                        {\n                            \"key\": 1,\n                            \"value\": {\n                                \"date_received\": \"2021-05-19T13:01:10.688765Z\",\n                                \"latest_state_change\": \"2021-05-19T13:01:10.688765Z\",\n                                \"status\": \"Accepted\",\n                                \"curve\": [\n                                    {\n                                        \"quantity_in_kw\": 100,\n                                        \"price\": 1\n                                    }\n                                ]\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"start_time\": \"2021-06-07T01:00:00Z\",\n                    \"end_time\": \"2021-06-07T02:00:00Z\",\n                    \"latest_version\": 1,\n                    \"market_status\": \"Unknown\",\n                    \"versions\": [\n                        {\n                            \"key\": 1,\n                            \"value\": {\n                                \"date_received\": \"2021-06-02T09:08:28.228511Z\",\n                                \"latest_state_change\": \"2021-06-02T09:08:28.228511Z\",\n                                \"status\": \"Accepted\",\n                                \"curve\": [\n                                    {\n                                        \"quantity_in_kw\": 100,\n                                        \"price\": 1\n                                    }\n                                ]\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"start_time\": \"2021-06-07T02:00:00Z\",\n                    \"end_time\": \"2021-06-07T03:00:00Z\",\n                    \"latest_version\": 1,\n                    \"market_status\": \"Unknown\",\n                    \"versions\": [\n                        {\n                            \"key\": 1,\n                            \"value\": {\n                                \"date_received\": \"2021-06-02T09:08:28.2285Z\",\n                                \"latest_state_change\": \"2021-06-02T09:08:28.2285Z\",\n                                \"status\": \"Accepted\",\n                                \"curve\": [\n                                    {\n                                        \"quantity_in_kw\": 100,\n                                        \"price\": 1\n                                    }\n                                ]\n                            }\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Search Dispatches",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"start_date\": \"2021-01-01T00:00:00.000Z\",\n    \"end_date\": \"2021-01-02T00:00:00.000Z\",\n    \"meter_ids\": [\n        \"{{meterId}}\"\n    ],\n    \"market_type\": \"day-ahead\",\n    \"include_tests\": true\n}"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"search"
+					]
+				},
+				"description": "Returns information about the dispatches for the given period.\n\n**Request parameters**\n\n\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>start_date*\n   </td>\n   <td>Datetime\n   </td>\n   <td>Start datetime range to get dispatches for (inclusive)\n   </td>\n  </tr>\n  <tr>\n   <td>end_date*\n   </td>\n   <td>Datetime\n   </td>\n   <td>End datetime range to get dispatches for (inclusive)\n<p>\nEnd date must be max 24 hours after the start date\n   </td>\n  </tr>\n  <tr>\n   <td>meter_ids\n   </td>\n   <td>List[UUID]\n   </td>\n   <td>Meter ids to get dispatches for\n   </td>\n  </tr>\n  <tr>\n   <td>include_tests\n   </td>\n   <td>Boolean\n   </td>\n   <td>Include dispatches for test events in the response\n   </td>\n  </tr>\n  <tr>\n   <td>rtm\n   </td>\n   <td>Enum\n   </td>\n   <td>Takes the values “5m” or “15m” corresponding to return only 5 minute or 15 minute real-time dispatches. If left empty, real-time dispatches are not included in the response.\n   </td>\n  </tr>\n  <tr>\n   <td>market_type\n   </td>\n   <td>Enum\n   </td>\n   <td>Takes the values “day-ahead” or “hour-ahead” corresponding to return only dispatches for those markets. If left empty both will be included in the response.\n   </td>\n  </tr>\n  <tr>\n   <td>page_token\n   </td>\n   <td>String\n   </td>\n   <td>Token of the page to request\n<p>\nNull to request a new batch of results\n   </td>\n  </tr>\n</table>\n\n**Response**\n<table>\n<tbody>\n<tr>\n<td>\n<p><strong>Field</strong></p>\n</td>\n<td>\n<p><strong>Type</strong></p>\n</td>\n<td>\n<p><strong>Comment</strong></p>\n</td>\n</tr>\n<tr>\n<td>\n<p>next_page_token</p>\n</td>\n<td>\n<p>String</p>\n</td>\n<td>\n<p>Token to be used in a subsequent request to get the next batch of results.</p>\n<p>Null when the last page of results has been reached</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>results</p>\n</td>\n<td>\n<p>List[MeterDispatch]</p>\n</td>\n<td>\n<p>A list with the meters, their bids, and status.</p>\n<p>Contents are the same as the response of the <em>place bids API call</em></p>\n</td>\n</tr>\n</tbody>\n</table>\n\n**MeterDispatch Object**\n<table>\n<tbody>\n<tr>\n<td>\n<p><strong>Field</strong></p>\n</td>\n<td>\n<p><strong>Type</strong></p>\n</td>\n<td>\n<p><strong>Comment</strong></p>\n</td>\n</tr>\n<tr>\n<td>\n<p>meter_id</p>\n</td>\n<td>\n<p>UUID</p>\n</td>\n<td>\n<p>Id of the meter that received dispatches from the market</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>timeslots</p>\n</td>\n<td>\n<p>List[Timeslot]</p>\n</td>\n<td>\n<p>List with time slots and quantities that contains dispatches for this meter</p>\n</td>\n</tr>\n</tbody>\n</table>\n\n**Timeslot object**\n<table cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\"><strong>Field</strong></span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\"><strong>Type<span class=\"Apple-converted-space\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></strong></span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\"><strong>Comment</strong></span></p>\n</td>\n</tr>\n<tr>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">start_time</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Datetime</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Start time of dispatch</span></p>\n</td>\n</tr>\n<tr>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">end_time</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Datetime</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">End time of dispatch</span></p>\n</td>\n</tr>\n<tr>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">energy_kw</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Float</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">The awarded kW for the dispatch</span></p>\n</td>\n</tr>\n<tr>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">test_event</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Boolean</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Indicates whether the dispatch is a test event</span></p>\n</td>\n</tr>\n<tr>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">market_type</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Enum</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Indicates the market &ldquo;day-ahead&rdquo; or &ldquo;hour-ahead&rdquo;</span></p>\n</td>\n</tr>\n<tr>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">cancelled</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\">Boolean</span></p>\n</td>\n<td valign=\"top\">\n<p><span style=\"color: #000000; font-family: Helvetica; font-size: medium;\"></span></p>\n</td>\n</tr>\n</tbody>\n</table>"
+			},
+			"response": [
+				{
+					"name": "Search Dispatches",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"start_date\": \"2021-01-01T00:00:00.000Z\",\n    \"end_date\": \"2022-01-02T00:00:00.000Z\",\n    \"meter_ids\": [\n        \"{{meterId}}\"\n    ],\n    \"market_type\": \"day-ahead\",\n    \"include_tests\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"dispatch",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Jun 2021 14:45:11 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "408"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "apigw-requestid",
+							"value": "ATTqqjLHSK4EMgg="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"results\": [\n        {\n            \"meter_id\": \"afce893d-ea68-487f-9f8c-778b1881f60a\",\n            \"timeslots\": [\n                {\n                    \"start_time\": \"2021-06-02T00:00:00Z\",\n                    \"end_time\": \"2021-06-02T01:00:00Z\",\n                    \"test_event\": false,\n                    \"energy_kw\": 4,\n                    \"market_type\": \"day-ahead\",\n                    \"cancelled\": false\n                },\n                {\n                    \"start_time\": \"2021-06-02T00:00:00Z\",\n                    \"end_time\": \"2021-06-02T01:00:00Z\",\n                    \"test_event\": true,\n                    \"energy_kw\": 20,\n                    \"market_type\": \"day-ahead\",\n                    \"cancelled\": false\n                }\n            ]\n        }\n    ],\n    \"next_page_token\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Search Group Dispatches",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start_date\": \"2021-08-01T00:00:00.000Z\",\n  \"end_date\": \"2021-08-02T00:00:00.000Z\",\n  \"market_group_ids\": null,\n  \"market_type\": \"day-ahead\",\n  \"include_tests\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/group/search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"group",
+						"search"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search Group Dispatches",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"start_date\": \"2021-08-01T00:00:00.000Z\",\n  \"end_date\": \"2021-08-31T00:00:00.000Z\",\n  \"market_group_ids\": [\"sample_market_group_id_1\", \"sample_market_group_id_2\"],\n  \"market_type\": \"day-ahead\",\n  \"include_tests\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/group/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"dispatch",
+								"group",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 23 Aug 2021 21:59:41 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2751"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "apigw-requestid",
+							"value": "EikMNiGESK4EMUg="
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "vary",
+							"value": "Access-Control-Request-Headers"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"results\": [\n        {\n            \"market_group_id\": \"sample_market_group_id_1\",\n            \"meter_ids\": [\n                \"sample_meter_id_1\",\n                \"sample_meter_id_2\",\n                \"sample_meter_id_3\"\n            ],\n            \"timeslots\": [\n                {\n                    \"start_time\": \"2021-08-10T23:00:00Z\",\n                    \"end_time\": \"2021-08-11T00:00:00Z\",\n                    \"test_event\": true,\n                    \"energy_kw\": 10,\n                    \"market_type\": \"day-ahead\",\n                    \"cancelled\": false\n                },\n                {\n                    \"start_time\": \"2021-08-11T00:00:00Z\",\n                    \"end_time\": \"2021-08-11T01:00:00Z\",\n                    \"test_event\": false,\n                    \"energy_kw\": 8,\n                    \"market_type\": \"day-ahead\",\n                    \"cancelled\": false\n                }\n            ]\n        },\n        {\n            \"market_group_id\": \"sample_market_group_id_2\",\n            \"meter_ids\": [\n                \"sample_meter_id_4\",\n                \"sample_meter_id_5\"\n            ],\n            \"timeslots\": [\n                {\n                    \"start_time\": \"2021-08-11T00:00:00Z\",\n                    \"end_time\": \"2021-08-11T01:00:00Z\",\n                    \"test_event\": false,\n                    \"energy_kw\": 10,\n                    \"market_type\": \"day-ahead\",\n                    \"cancelled\": false\n                },\n                {\n                    \"start_time\": \"2021-08-11T01:00:00Z\",\n                    \"end_time\": \"2021-08-11T02:00:00Z\",\n                    \"test_event\": false,\n                    \"energy_kw\": 12,\n                    \"market_type\": \"day-ahead\",\n                    \"cancelled\": false\n                }\n            ]\n        }\n    ],\n    \"next_page_token\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Meter Dispatch Webhook",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"https://your-webhook-url.com\",\n    \"headers\": [\n        {\n            \"name\": \"x-api-key\",\n            \"value\": \"your-test-key\"\n        },\n        {\n            \"name\": \"arbitrary-header-name\",\n            \"value\": \"arbitrary-value\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/webhook",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"webhook"
+					]
+				},
+				"description": "Create a new, or update an existing Dispatch Webhook URL.This `url` will receive dispatch messages per-meter. \n\n**Request Parameters** \n\n| Field   | Type  | Comment                                                                                                                                      |\n|---------|-------|----------------------------------------------------------------------------------------------------------------------------------------------|\n| url     | url   | Your web address to which dispatch notifications will be sent by the Leap API.                                                               |\n| headers | array | List of `name` and `value` pairs which will be sent as Headers on requests to the `url`. A `name` is arbitrary and can be any string.  |\n\n**Header**\n\n| Field   | Type   | Comment                                                                                                                                      |\n|---------|--------|----------------------------------------------------------------------------------------------------------------------------------------------|\n| name    | string | Your web address to which dispatch notifications will be sent by the Leap API.                                                               |\n| headers | array  | List of `name` and `value` pairs which will be sent as Headers on requests to the `url`. `names` are arbitrary and can be any string value.  |"
+			},
+			"response": [
+				{
+					"name": "Create Dispatch Webhook",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"https://your-webhook-url.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/webhook",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"dispatch",
+								"webhook"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Jun 2021 09:11:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "apigw-requestid",
+							"value": "ASi0Yj2hSK4EMoA="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"url\": \"https://your-webhook-url.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Test Notification to Meter Dispatch Webhook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"meter_id\": \"{{meterId}}\",\n    \"timeslot\": {\n        \"start_time\": \"2021-05-25T22:00:00Z\",\n        \"end_time\": \"2021-05-25T23:00:00Z\",\n        \"energy_kw\": \"1000\",\n        \"test_event\": true,\n        \"market_type\": \"day-ahead\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/webhook/test_url",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"webhook",
+						"test_url"
+					]
+				},
+				"description": "Create a test notification that will trigger a webhook call with the corresponding dispatch notification data.\n\n**Request Parameters**\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>meter_id\n   </td>\n   <td>UUID\n   </td>\n   <td>The id of the meter\n   </td>\n  </tr>\n  <tr>\n   <td>timeslot\n   </td>\n   <td>Timeslot\n   </td>\n   <td>The dispatch notification timeslot\n   </td>\n  </tr>\n</table>\n\n\n\n**Timeslot**\n\n<table>\n  <tr>\n   <td><strong>Field</strong>\n   </td>\n   <td><strong>Type</strong>\n   </td>\n   <td><strong>Comment</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>start_time\n   </td>\n   <td>Datetime \n   </td>\n   <td>Timestamp when the dispatch should begin\n   </td>\n  </tr>\n  <tr>\n   <td>end_time\n   </td>\n   <td>Datetime\n   </td>\n   <td>Timestamp when the dispatch should end\n   </td>\n  </tr>\n  <tr>\n   <td>energy_kw\n   </td>\n   <td>Double\n   </td>\n   <td>The level of load reduction required across the timeslot. If the value is 'null' this indicates a full dispatch.\n   </td>\n  </tr>\n  <tr>\n   <td>test_event\n   </td>\n   <td>Boolean\n   </td>\n   <td>‘true’ if the purpose of the dispatch is testing the meter’s capabilities\n   </td>\n  </tr>\n  <tr>\n   <td>market_type\n   </td>\n   <td>Enum\n   </td>\n   <td>Market type - The market award which triggered the dispatch.\n<p>\nAllowed values are:\n<ul>\n\n<li>`day-ahead` - Day ahead market\n\n<li>`hour-ahead` - Hour ahead market\n</li>\n</ul>\n   </td>\n  </tr>\n  <tr>\n   <td>cancelled\n   </td>\n   <td>Boolean\n   </td>\n   <td>‘true’ if a previously created dispatch is cancelled; the (meter_id, start_time, end_time, market_type) combination should be used in order to identify which one of the previously saved DispatchTimeslot has to be cancelled.\n   </td>\n  </tr>\n</table>"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Meter Dispatch Webhook URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/webhook",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"webhook"
+					]
+				},
+				"description": "Retrieve the current Dispatch Webhook URL."
+			},
+			"response": [
+				{
+					"name": "Get Dispatch Webhook URL",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/webhook",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"dispatch",
+								"webhook"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Jun 2021 09:11:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "apigw-requestid",
+							"value": "ASi2mheaSK4EMgw="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"url\": \"https://your-webhook-url.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove Meter Dispatch Webhook",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/webhook",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Group Dispatch Webhook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"https://your-webhook-url.com\",\n    \"headers\": [\n        {\n            \"name\": \"x-api-key\",\n            \"value\": \"your-test-key\"\n        },\n        {\n            \"name\": \"arbitrary-header-name\",\n            \"value\": \"arbitrary-value\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/group/webhook",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"group",
+						"webhook"
+					]
+				},
+				"description": "Create a new, or update an existing Dispatch Webhook URL.This `url` will receive dispatch messages per-group (group is a collection of meters). \n\n**Request Parameters** \n\n| Field   | Type  | Comment                                                                                                                                      |\n|---------|-------|----------------------------------------------------------------------------------------------------------------------------------------------|\n| url     | url   | Your web address to which dispatch notifications will be sent by the Leap API.                                                               |\n| headers | array | List of `name` and `value` pairs which will be sent as Headers on requests to the `url`. A `name` is arbitrary and can be any string.  |\n\n**Header**\n\n| Field   | Type   | Comment                                                                                                                                      |\n|---------|--------|----------------------------------------------------------------------------------------------------------------------------------------------|\n| name    | string | Your web address to which dispatch notifications will be sent by the Leap API.                                                               |\n| headers | array  | List of `name` and `value` pairs which will be sent as Headers on requests to the `url`. `names` are arbitrary and can be any string value.  |"
+			},
+			"response": [
+				{
+					"name": "Create Group Dispatch Webhook",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"url\": \"your-url.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/group/webhook",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"dispatch",
+								"group",
+								"webhook"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"url\": \"https://your-webhook-url.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove Group Dispatch Webhook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/group/webhook",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"group",
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Dispatch Webhook URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/group/webhook",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"group",
+						"webhook"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Group Dispatch Webhook URL",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/group/webhook",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{version}}",
+								"account",
+								"{{accountId}}",
+								"bidding",
+								"dispatch",
+								"group",
+								"webhook"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"url\": \"https://your-webhook-url.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Test Notification to Group Dispatch Webhook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"market_group_id\": \"b731a5f2-c6a4-48b3-b47d-d5017a039ae7\",\n    \"meter_ids\": [\n        \"{{meterId}}\"\n    ],\n    \"timeslot\": {\n        \"start_time\": \"2021-05-25T22:00:00Z\",\n        \"end_time\": \"2021-05-25T23:00:00Z\",\n        \"energy_kw\": \"1000\",\n        \"test_event\": true,\n        \"market_type\": \"day-ahead\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{host}}/{{version}}/account/{{accountId}}/bidding/dispatch/group/webhook/test_url",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{version}}",
+						"account",
+						"{{accountId}}",
+						"bidding",
+						"dispatch",
+						"group",
+						"webhook",
+						"test_url"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

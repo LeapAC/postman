@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "133041a7-7c4d-49b3-a4e7-e846ac454a84",
+		"name": "SCE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9021681"
+	},
+	"item": [
+		{
+			"name": "Auth token",
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "0oa88w3b0yPZtOFeg1t7",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "FRpKefeG5o-9n5qZzLBBiR4gDGrXWGC3s2dr6l8k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "scope",
+							"value": "/DataCustodian/espi/1_1/resource/Batch/Bulk/UF3JC5XCHPFSCY/",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://energydatashare.sce.com/OAuthServices/oauth20/token",
+					"protocol": "https",
+					"host": [
+						"energydatashare",
+						"sce",
+						"com"
+					],
+					"path": [
+						"OAuthServices",
+						"oauth20",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "/DataCustodian/espi/1_1/resource/Batch/Bulk/UF3JC5XCHPFSCY/",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "DataCustodian",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorizations list",
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiI4dWUycVVBdkcteUc4VGdCMDlyaUFuTmR1R0ZkTC1pNk1xM0hnWFlWUjhJIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULmI0QVV5SXJCNHJEWUVrX2ZHTmdpVk1wYXpRTlBiTDZFd2YwQTV6bW9qc28iLCJpc3MiOiJodHRwczovL2VkaXNvbi5va3RhLmNvbS9vYXV0aDIvYXVzNjc3dXFneUE2Qmo2VmwxdDciLCJhdWQiOiJpem9hcGRwZzAxczEuc2NlLmNvbSIsImlhdCI6MTY1MTQ4NTU0MCwiZXhwIjoxNjUxNDg5MTQwLCJjaWQiOiIwb2E4OHczYjB5UFp0T0ZlZzF0NyIsInNjcCI6WyIvRGF0YUN1c3RvZGlhbi9lc3BpLzFfMS9yZXNvdXJjZS9CYXRjaC9CdWxrL1VGM0pDNVhDSFBGU0NZIl0sInN1YiI6IjBvYTg4dzNiMHlQWnRPRmVnMXQ3In0.M0uLs0Frhqi-TdzjWnaJisgsgh6Qgf3E-PIxA2gkGELLMC5rjqpZSQStGeKHoeUtJGFwbhUDJs3_9DSGZRwNGeVChTArPKo1lyShcNlqHyQyX_Kz68dmjfbg4jamzxZUlmjoxRftjr76ESrzEzfBrU0RNMFQxGKNqji9ksgEhe71vC_jt9Yte40yELNxobkcEcHnZa0nLK9uhO7UBg6YiMumWl81QVXa2UPBkOt9xPB-m0veWCZ275Z4aXrk459AFPu53zCPT5y-6ag2PAwks25YWbV98P_zXWt9tzsvwOblEa_1N_Z0GdKdLCrfCln0PoDgtv7eGBZ9HzXaHn8qwg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<authorization>\n    <authorizationList>\n        <cisrID>PY5Q5ZWV7</cisrID>\n        <cisrID>KUMPVVF8H</cisrID>\n        <cisrID>JLZ7JL7J5</cisrID>\n        <cisrID>DYD4K79UG</cisrID>\n        <cisrID>BFLUNSM7I</cisrID>\n        <cisrID>XIQ8GMOH7</cisrID>\n    </authorizationList>\n</authorization>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://energydatashare.sce.com/DataCustodian/espi/1_1/resource/Authorization",
+					"protocol": "https",
+					"host": [
+						"energydatashare",
+						"sce",
+						"com"
+					],
+					"path": [
+						"DataCustodian",
+						"espi",
+						"1_1",
+						"resource",
+						"Authorization"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "/DataCustodian/espi/1_1/resource/Batch/Bulk/UF3JC5XCHPFSCY/",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "DataCustodian",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization (ONE)",
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiI4dWUycVVBdkcteUc4VGdCMDlyaUFuTmR1R0ZkTC1pNk1xM0hnWFlWUjhJIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULmlOQkZtTmRvRWZVRkRab09Mb1VMdXJqeXpFakRoc1RqLU1HS0FJME1UR2siLCJpc3MiOiJodHRwczovL2VkaXNvbi5va3RhLmNvbS9vYXV0aDIvYXVzNjc3dXFneUE2Qmo2VmwxdDciLCJhdWQiOiJpem9hcGRwZzAxczEuc2NlLmNvbSIsImlhdCI6MTY1MTQ4NTkyOCwiZXhwIjoxNjUxNDg5NTI4LCJjaWQiOiIwb2E4OHczYjB5UFp0T0ZlZzF0NyIsInNjcCI6WyIvRGF0YUN1c3RvZGlhbi9lc3BpLzFfMS9yZXNvdXJjZS9CYXRjaC9CdWxrL1VGM0pDNVhDSFBGU0NZIl0sInN1YiI6IjBvYTg4dzNiMHlQWnRPRmVnMXQ3In0.o4oJskGHmtlVu3dRacaYzKoDGn9F67lVUisRnb2U8BhgD6JQ-8tX0EY0-VMkqq8epQrv9be1sI2KDG9FQT6DPRAxkPDup1P5csSruY6r_GrCLXNqzhNcoP1pYRq4wqSO0sx9xLTIi1LJMVlmvPmyQDak70F8hfH7LuqwCm0XhCaI38AyONMvjym9YCoBZXVL65KxK-1MKtsQRkAoYIH4bDRljsg-k95MVe-YdY-dnM5d9YFR9QSHv3mCIa7IPc2Z8pksg7LW0TuMQXNtT0n7oTXy4udIOutBFbLl01Kjz73u4_9K8SoIPZEs03oUaHqhHcMO_33ropoFarlDDy9CWQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://energydatashare.sce.com/DataCustodian/espi/1_1/resource/Authorization/JLZ7JL7J5",
+					"protocol": "https",
+					"host": [
+						"energydatashare",
+						"sce",
+						"com"
+					],
+					"path": [
+						"DataCustodian",
+						"espi",
+						"1_1",
+						"resource",
+						"Authorization",
+						"JLZ7JL7J5"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "/DataCustodian/espi/1_1/resource/Batch/Bulk/UF3JC5XCHPFSCY/",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "DataCustodian",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "dea2623c-add5-4b37-a316-6ab7b41d8a7e",
+		"name": "PGE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9021681"
+	},
+	"item": [
+		{
+			"name": "Initial Authcode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.pge.com/datacustodian/test/oauth/v2/token?grant_type=authorization_code&redirect_uri=https://addleap.com&code=my-url-code",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pge",
+						"com"
+					],
+					"path": [
+						"datacustodian",
+						"test",
+						"oauth",
+						"v2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://addleap.com"
+						},
+						{
+							"key": "code",
+							"value": "my-url-code"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth token test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.pge.com/datacustodian/test/oauth/v2/token?grant_type=client_credentials",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pge",
+						"com"
+					],
+					"path": [
+						"datacustodian",
+						"test",
+						"oauth",
+						"v2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth. Leap Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.pge.com/datacustodian/oauth/v2/token?grant_type=client_credentials",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pge",
+						"com"
+					],
+					"path": [
+						"datacustodian",
+						"oauth",
+						"v2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth. Customer access token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.pge.com/datacustodian/oauth/v2/token?grant_type=client_credentials&scope=subscription-id-here",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pge",
+						"com"
+					],
+					"path": [
+						"datacustodian",
+						"oauth",
+						"v2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials"
+						},
+						{
+							"key": "scope",
+							"value": "subscription-id-here"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth. Refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.pge.com/datacustodian/oauth/v2/token?grant_type=refresh_token&refresh_token=old-refresh-token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pge",
+						"com"
+					],
+					"path": [
+						"datacustodian",
+						"oauth",
+						"v2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token"
+						},
+						{
+							"key": "refresh_token",
+							"value": "old-refresh-token"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Service status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "665a3160-3b2b-4b5d-9532-f7cf23e31c95",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.pge.com/GreenButtonConnect/espi/1_1/resource/ReadServiceStatus",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pge",
+						"com"
+					],
+					"path": [
+						"GreenButtonConnect",
+						"espi",
+						"1_1",
+						"resource",
+						"ReadServiceStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Details (ALL)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "509efc38-d040-469b-bb65-da7ebd703eff",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.pge.com/GreenButtonConnect/espi/1_1/resource/Authorization",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pge",
+						"com"
+					],
+					"path": [
+						"GreenButtonConnect",
+						"espi",
+						"1_1",
+						"resource",
+						"Authorization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Details (ONE)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.pge.com/datacustodian/test/oauth/v2/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pge",
+						"com"
+					],
+					"path": [
+						"datacustodian",
+						"test",
+						"oauth",
+						"v2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "a8327827b3d349fdba3ee52c641cb5c2",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "ec2522fd8b4f49fca9bdd16c2d56293c",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

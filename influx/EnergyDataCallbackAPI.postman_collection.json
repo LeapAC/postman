@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "ecf43b2c-2a2c-4a10-9c43-121be3f78afb",
+		"name": "EnergyDataCallbackAPI",
+		"description": "EnergyDataCallbackAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9021681"
+	},
+	"item": [
+		{
+			"name": "post Interval",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"trans_id\": \"yhbddJJpdC4zrlP6zE\",\n  \"correlationId\": \"l\",\n  \"esiidIntervalData\": [\n    {\n      \"esiid\": \"et\",\n      \"intervalEnergy\": [\n        {\n          \"DT\": \"01/20/2018\",\n          \"RevTS\": \"1953-05-05T11:38:23.357Z\",\n          \"RT\": \"C\",\n          \"RD\": \".085-A,.118-A,.085-A,.153-A,.123-A,.143-A,.133-A,.134-A,,,,,.143-A,.125-A,.15-A,.117-A,.159-A,.109-A,.159-A,.114-A,.153-A,.121-A,.146-A,.126-A,.141-A,.132-A,.136-A,.273-A,.159-A,.175-A,.107-A,.138-A,.132-A,.138-A,.082-A,.123-A,.117-A,.147-A,.113-A,.145-A,.121-A,.147-A,.119-A,.141-A,.122-A,.138-A,.126-A,.136-A,.127-A,.134-A,.17-A,.15-A,.111-A,.142-A,.132-A,.126-A,.141-A,.119-A,.153-A,.112-A,.153-A,.105-A,.153-A,.105-A,.136-A,.132-A,.118-A,.117-A,.12-A,.118-A,.132-A,.103-A,.147-A,.117-A,.144-A,.176-A,.125-A,.162-A,.12-A,.163-A,.125-A,.154-A,.134-A,.147-A,.162-A,.111-A,.16-A,.123-A,.148-A,.133-A,.138-A,.132-A,.13-A,.151-A,.123-A,.16-A,.114-A,.162-A,.117-A,.125-A\"\n        },\n        {\n          \"DT\": \"01/20/2018\",\n          \"RevTS\": \"1954-05-30T23:35:25.456Z\",\n          \"RT\": \"C\",\n          \"RD\": \".085-A,.118-A,.085-A,.153-A,.123-A,.143-A,.133-A,.134-A,,,,,.143-A,.125-A,.15-A,.117-A,.159-A,.109-A,.159-A,.114-A,.153-A,.121-A,.146-A,.126-A,.141-A,.132-A,.136-A,.273-A,.159-A,.175-A,.107-A,.138-A,.132-A,.138-A,.082-A,.123-A,.117-A,.147-A,.113-A,.145-A,.121-A,.147-A,.119-A,.141-A,.122-A,.138-A,.126-A,.136-A,.127-A,.134-A,.17-A,.15-A,.111-A,.142-A,.132-A,.126-A,.141-A,.119-A,.153-A,.112-A,.153-A,.105-A,.153-A,.105-A,.136-A,.132-A,.118-A,.117-A,.12-A,.118-A,.132-A,.103-A,.147-A,.117-A,.144-A,.176-A,.125-A,.162-A,.12-A,.163-A,.125-A,.154-A,.134-A,.147-A,.162-A,.111-A,.16-A,.123-A,.148-A,.133-A,.138-A,.132-A,.13-A,.151-A,.123-A,.16-A,.114-A,.162-A,.117-A,.125-A\"\n        }\n      ],\n      \"errorCode\": \"consectetur non velit\",\n      \"errorMessage\": \"amet fugiat dolore\"\n    },\n    {\n      \"esiid\": \"veniam\",\n      \"intervalEnergy\": [\n        {\n          \"DT\": \"01/20/2018\",\n          \"RevTS\": \"2001-10-12T22:23:41.672Z\",\n          \"RT\": \"C\",\n          \"RD\": \".085-A,.118-A,.085-A,.153-A,.123-A,.143-A,.133-A,.134-A,,,,,.143-A,.125-A,.15-A,.117-A,.159-A,.109-A,.159-A,.114-A,.153-A,.121-A,.146-A,.126-A,.141-A,.132-A,.136-A,.273-A,.159-A,.175-A,.107-A,.138-A,.132-A,.138-A,.082-A,.123-A,.117-A,.147-A,.113-A,.145-A,.121-A,.147-A,.119-A,.141-A,.122-A,.138-A,.126-A,.136-A,.127-A,.134-A,.17-A,.15-A,.111-A,.142-A,.132-A,.126-A,.141-A,.119-A,.153-A,.112-A,.153-A,.105-A,.153-A,.105-A,.136-A,.132-A,.118-A,.117-A,.12-A,.118-A,.132-A,.103-A,.147-A,.117-A,.144-A,.176-A,.125-A,.162-A,.12-A,.163-A,.125-A,.154-A,.134-A,.147-A,.162-A,.111-A,.16-A,.123-A,.148-A,.133-A,.138-A,.132-A,.13-A,.151-A,.123-A,.16-A,.114-A,.162-A,.117-A,.125-A\"\n        },\n        {\n          \"DT\": \"01/20/2018\",\n          \"RevTS\": \"1995-07-16T05:26:42.460Z\",\n          \"RT\": \"C\",\n          \"RD\": \".085-A,.118-A,.085-A,.153-A,.123-A,.143-A,.133-A,.134-A,,,,,.143-A,.125-A,.15-A,.117-A,.159-A,.109-A,.159-A,.114-A,.153-A,.121-A,.146-A,.126-A,.141-A,.132-A,.136-A,.273-A,.159-A,.175-A,.107-A,.138-A,.132-A,.138-A,.082-A,.123-A,.117-A,.147-A,.113-A,.145-A,.121-A,.147-A,.119-A,.141-A,.122-A,.138-A,.126-A,.136-A,.127-A,.134-A,.17-A,.15-A,.111-A,.142-A,.132-A,.126-A,.141-A,.119-A,.153-A,.112-A,.153-A,.105-A,.153-A,.105-A,.136-A,.132-A,.118-A,.117-A,.12-A,.118-A,.132-A,.103-A,.147-A,.117-A,.144-A,.176-A,.125-A,.162-A,.12-A,.163-A,.125-A,.154-A,.134-A,.147-A,.162-A,.111-A,.16-A,.123-A,.148-A,.133-A,.138-A,.132-A,.13-A,.151-A,.123-A,.16-A,.114-A,.162-A,.117-A,.125-A\"\n        }\n      ],\n      \"errorCode\": \"ullamco nulla quis qui\",\n      \"errorMessage\": \"consectetur tempor officia fugiat nostrud\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/15minintervalreads",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"15minintervalreads"
+					]
+				},
+				"description": "Insert a interval"
+			},
+			"response": [
+				{
+					"name": "The operation was successful.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"trans_id\": \"F6i24c3Vc2VCz274xqmeqID9CIM\",\n  \"correlationId\": \"nostr\",\n  \"esiidIntervalData\": [\n    {\n      \"esiid\": \"culpa\",\n      \"intervalEnergy\": [\n        {\n          \"DT\": \"01/20/2018\",\n          \"RevTS\": \"2018-06-02T06:37:52.322Z\",\n          \"RT\": \"C\",\n          \"RD\": \".085-A,.118-A,.085-A,.153-A,.123-A,.143-A,.133-A,.134-A,,,,,.143-A,.125-A,.15-A,.117-A,.159-A,.109-A,.159-A,.114-A,.153-A,.121-A,.146-A,.126-A,.141-A,.132-A,.136-A,.273-A,.159-A,.175-A,.107-A,.138-A,.132-A,.138-A,.082-A,.123-A,.117-A,.147-A,.113-A,.145-A,.121-A,.147-A,.119-A,.141-A,.122-A,.138-A,.126-A,.136-A,.127-A,.134-A,.17-A,.15-A,.111-A,.142-A,.132-A,.126-A,.141-A,.119-A,.153-A,.112-A,.153-A,.105-A,.153-A,.105-A,.136-A,.132-A,.118-A,.117-A,.12-A,.118-A,.132-A,.103-A,.147-A,.117-A,.144-A,.176-A,.125-A,.162-A,.12-A,.163-A,.125-A,.154-A,.134-A,.147-A,.162-A,.111-A,.16-A,.123-A,.148-A,.133-A,.138-A,.132-A,.13-A,.151-A,.123-A,.16-A,.114-A,.162-A,.117-A,.125-A\"\n        },\n        {\n          \"DT\": \"01/20/2018\",\n          \"RevTS\": \"1970-03-24T04:17:19.630Z\",\n          \"RT\": \"C\",\n          \"RD\": \".085-A,.118-A,.085-A,.153-A,.123-A,.143-A,.133-A,.134-A,,,,,.143-A,.125-A,.15-A,.117-A,.159-A,.109-A,.159-A,.114-A,.153-A,.121-A,.146-A,.126-A,.141-A,.132-A,.136-A,.273-A,.159-A,.175-A,.107-A,.138-A,.132-A,.138-A,.082-A,.123-A,.117-A,.147-A,.113-A,.145-A,.121-A,.147-A,.119-A,.141-A,.122-A,.138-A,.126-A,.136-A,.127-A,.134-A,.17-A,.15-A,.111-A,.142-A,.132-A,.126-A,.141-A,.119-A,.153-A,.112-A,.153-A,.105-A,.153-A,.105-A,.136-A,.132-A,.118-A,.117-A,.12-A,.118-A,.132-A,.103-A,.147-A,.117-A,.144-A,.176-A,.125-A,.162-A,.12-A,.163-A,.125-A,.154-A,.134-A,.147-A,.162-A,.111-A,.16-A,.123-A,.148-A,.133-A,.138-A,.132-A,.13-A,.151-A,.123-A,.16-A,.114-A,.162-A,.117-A,.125-A\"\n        }\n      ],\n      \"errorCode\": \"laboris\",\n      \"errorMessage\": \"cillum\"\n    },\n    {\n      \"esiid\": \"voluptate incididunt\",\n      \"intervalEnergy\": [\n        {\n          \"DT\": \"01/20/2018\",\n          \"RevTS\": \"1956-09-07T12:41:34.148Z\",\n          \"RT\": \"C\",\n          \"RD\": \".085-A,.118-A,.085-A,.153-A,.123-A,.143-A,.133-A,.134-A,,,,,.143-A,.125-A,.15-A,.117-A,.159-A,.109-A,.159-A,.114-A,.153-A,.121-A,.146-A,.126-A,.141-A,.132-A,.136-A,.273-A,.159-A,.175-A,.107-A,.138-A,.132-A,.138-A,.082-A,.123-A,.117-A,.147-A,.113-A,.145-A,.121-A,.147-A,.119-A,.141-A,.122-A,.138-A,.126-A,.136-A,.127-A,.134-A,.17-A,.15-A,.111-A,.142-A,.132-A,.126-A,.141-A,.119-A,.153-A,.112-A,.153-A,.105-A,.153-A,.105-A,.136-A,.132-A,.118-A,.117-A,.12-A,.118-A,.132-A,.103-A,.147-A,.117-A,.144-A,.176-A,.125-A,.162-A,.12-A,.163-A,.125-A,.154-A,.134-A,.147-A,.162-A,.111-A,.16-A,.123-A,.148-A,.133-A,.138-A,.132-A,.13-A,.151-A,.123-A,.16-A,.114-A,.162-A,.117-A,.125-A\"\n        },\n        {\n          \"DT\": \"01/20/2018\",\n          \"RevTS\": \"1993-05-09T20:19:49.495Z\",\n          \"RT\": \"C\",\n          \"RD\": \".085-A,.118-A,.085-A,.153-A,.123-A,.143-A,.133-A,.134-A,,,,,.143-A,.125-A,.15-A,.117-A,.159-A,.109-A,.159-A,.114-A,.153-A,.121-A,.146-A,.126-A,.141-A,.132-A,.136-A,.273-A,.159-A,.175-A,.107-A,.138-A,.132-A,.138-A,.082-A,.123-A,.117-A,.147-A,.113-A,.145-A,.121-A,.147-A,.119-A,.141-A,.122-A,.138-A,.126-A,.136-A,.127-A,.134-A,.17-A,.15-A,.111-A,.142-A,.132-A,.126-A,.141-A,.119-A,.153-A,.112-A,.153-A,.105-A,.153-A,.105-A,.136-A,.132-A,.118-A,.117-A,.12-A,.118-A,.132-A,.103-A,.147-A,.117-A,.144-A,.176-A,.125-A,.162-A,.12-A,.163-A,.125-A,.154-A,.134-A,.147-A,.162-A,.111-A,.16-A,.123-A,.148-A,.133-A,.138-A,.132-A,.13-A,.151-A,.123-A,.16-A,.114-A,.162-A,.117-A,.125-A\"\n        }\n      ],\n      \"errorCode\": \"commodo\",\n      \"errorMessage\": \"nostrud fugiat\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/15minintervalreads",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"15minintervalreads"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "post Daily",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"trans_id\": \"o5qcO53psx7ksx6pt31LTw7\",\n  \"correlationId\": \"eni\",\n  \"esiidDailyData\": [\n    {\n      \"esiid\": \"occaecat elit nostrud et\",\n      \"registeredReads\": [\n        {\n          \"readDate\": \"01/20/2018\",\n          \"revisionDate\": \"1981-04-12T17:50:52.375Z\",\n          \"startReading\": \"43791.955\",\n          \"endReading\": \"43798.024\",\n          \"energyDataKwh\": \"6.031\"\n        },\n        {\n          \"readDate\": \"01/20/2018\",\n          \"revisionDate\": \"1957-09-27T04:46:25.345Z\",\n          \"startReading\": \"43791.955\",\n          \"endReading\": \"43798.024\",\n          \"energyDataKwh\": \"6.031\"\n        }\n      ],\n      \"errorCode\": \"fugiat qui\",\n      \"errorMessage\": \"est ut sint eiusmod dolor\"\n    },\n    {\n      \"esiid\": \"velit qui sit\",\n      \"registeredReads\": [\n        {\n          \"readDate\": \"01/20/2018\",\n          \"revisionDate\": \"1981-04-03T20:10:21.698Z\",\n          \"startReading\": \"43791.955\",\n          \"endReading\": \"43798.024\",\n          \"energyDataKwh\": \"6.031\"\n        },\n        {\n          \"readDate\": \"01/20/2018\",\n          \"revisionDate\": \"1988-07-21T21:11:38.579Z\",\n          \"startReading\": \"43791.955\",\n          \"endReading\": \"43798.024\",\n          \"energyDataKwh\": \"6.031\"\n        }\n      ],\n      \"errorCode\": \"in Ut reprehenderit laborum Excepteur\",\n      \"errorMessage\": \"Lorem amet veniam occaecat consectetur\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/dailyreads",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"dailyreads"
+					]
+				},
+				"description": "Insert a daily"
+			},
+			"response": [
+				{
+					"name": "The operation was successful.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"trans_id\": \"KUrJDON5pBLi8aDJ26tC25peSwl\",\n  \"correlationId\": \"esse i\",\n  \"esiidDailyData\": [\n    {\n      \"esiid\": \"occaecat Excepteur sed\",\n      \"registeredReads\": [\n        {\n          \"readDate\": \"01/20/2018\",\n          \"revisionDate\": \"1974-08-12T21:04:17.144Z\",\n          \"startReading\": \"43791.955\",\n          \"endReading\": \"43798.024\",\n          \"energyDataKwh\": \"6.031\"\n        },\n        {\n          \"readDate\": \"01/20/2018\",\n          \"revisionDate\": \"1966-01-22T09:59:11.628Z\",\n          \"startReading\": \"43791.955\",\n          \"endReading\": \"43798.024\",\n          \"energyDataKwh\": \"6.031\"\n        }\n      ],\n      \"errorCode\": \"irure ut eu minim magna\",\n      \"errorMessage\": \"mollit nostrud\"\n    },\n    {\n      \"esiid\": \"nisi amet\",\n      \"registeredReads\": [\n        {\n          \"readDate\": \"01/20/2018\",\n          \"revisionDate\": \"1947-06-22T11:16:05.585Z\",\n          \"startReading\": \"43791.955\",\n          \"endReading\": \"43798.024\",\n          \"energyDataKwh\": \"6.031\"\n        },\n        {\n          \"readDate\": \"01/20/2018\",\n          \"revisionDate\": \"1979-01-16T14:26:56.707Z\",\n          \"startReading\": \"43791.955\",\n          \"endReading\": \"43798.024\",\n          \"energyDataKwh\": \"6.031\"\n        }\n      ],\n      \"errorCode\": \"ut in\",\n      \"errorMessage\": \"sed exercitation\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/dailyreads",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"dailyreads"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "post Monthly",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"trans_id\": \"mqAAX58\",\n  \"correlationId\": \"\",\n  \"esiidMonthlyBillingData\": [\n    {\n      \"esiid\": \"officia Duis esse pariatur dolor\",\n      \"billingData\": [\n        {\n          \"startDate\": \"01/20/2018\",\n          \"endDate\": \"02/20/2018\",\n          \"actualkWh\": \"389\",\n          \"meteredKW\": \"non eiusmod anim\",\n          \"billedKW\": \"velit\",\n          \"meteredKVA\": \"mollit proident voluptate\",\n          \"billedKVA\": \"enim laboris in aliqua\",\n          \"revisionDate\": \"1955-09-04T20:45:48.067Z\"\n        },\n        {\n          \"startDate\": \"01/20/2018\",\n          \"endDate\": \"02/20/2018\",\n          \"actualkWh\": \"389\",\n          \"meteredKW\": \"ut\",\n          \"billedKW\": \"irure deserunt ullamco\",\n          \"meteredKVA\": \"aute labore cillum consectetur Lorem\",\n          \"billedKVA\": \"ut in Ut id\",\n          \"revisionDate\": \"2012-11-24T16:23:49.249Z\"\n        }\n      ],\n      \"errorCode\": \"incididunt ut eu sint dolore\",\n      \"errorMessage\": \"voluptate in qui\"\n    },\n    {\n      \"esiid\": \"nisi nostrud consectetur amet\",\n      \"billingData\": [\n        {\n          \"startDate\": \"01/20/2018\",\n          \"endDate\": \"02/20/2018\",\n          \"actualkWh\": \"389\",\n          \"meteredKW\": \"exercitation dolor id\",\n          \"billedKW\": \"aliquip eiusmod reprehenderit esse\",\n          \"meteredKVA\": \"amet cupidatat laborum minim voluptate\",\n          \"billedKVA\": \"officia aliqua in reprehenderit\",\n          \"revisionDate\": \"1955-03-05T10:36:32.679Z\"\n        },\n        {\n          \"startDate\": \"01/20/2018\",\n          \"endDate\": \"02/20/2018\",\n          \"actualkWh\": \"389\",\n          \"meteredKW\": \"ut nostrud proident nulla\",\n          \"billedKW\": \"proident ipsum\",\n          \"meteredKVA\": \"elit\",\n          \"billedKVA\": \"occaecat \",\n          \"revisionDate\": \"1971-06-24T02:28:01.627Z\"\n        }\n      ],\n      \"errorCode\": \"qui consectetur\",\n      \"errorMessage\": \"dolor Ut in ullamco\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/monthlybillingInformation",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"monthlybillingInformation"
+					]
+				},
+				"description": "Insert a monthly"
+			},
+			"response": [
+				{
+					"name": "The operation was successful.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"trans_id\": \"W\",\n  \"correlationId\": \"cupidatat in\",\n  \"esiidMonthlyBillingData\": [\n    {\n      \"esiid\": \"nostrud ipsum\",\n      \"billingData\": [\n        {\n          \"startDate\": \"01/20/2018\",\n          \"endDate\": \"02/20/2018\",\n          \"actualkWh\": \"389\",\n          \"meteredKW\": \"adipisicing veniam minim eiusmod\",\n          \"billedKW\": \"minim proident enim irure\",\n          \"meteredKVA\": \"velit ullamco\",\n          \"billedKVA\": \"dolor irure aliqua eu\",\n          \"revisionDate\": \"1961-10-15T08:41:32.467Z\"\n        },\n        {\n          \"startDate\": \"01/20/2018\",\n          \"endDate\": \"02/20/2018\",\n          \"actualkWh\": \"389\",\n          \"meteredKW\": \"anim aute in quis\",\n          \"billedKW\": \"sit dolore\",\n          \"meteredKVA\": \"laboris laborum dolor aliquip\",\n          \"billedKVA\": \"commodo dolor dolore qui\",\n          \"revisionDate\": \"1944-11-12T02:45:39.174Z\"\n        }\n      ],\n      \"errorCode\": \"cul\",\n      \"errorMessage\": \"sint nisi\"\n    },\n    {\n      \"esiid\": \"commodo est adipisicing exercitation\",\n      \"billingData\": [\n        {\n          \"startDate\": \"01/20/2018\",\n          \"endDate\": \"02/20/2018\",\n          \"actualkWh\": \"389\",\n          \"meteredKW\": \"ex labo\",\n          \"billedKW\": \"esse ullamco nostrud laborum reprehenderit\",\n          \"meteredKVA\": \"adipisicing anim nulla eu amet\",\n          \"billedKVA\": \"aliquip voluptate\",\n          \"revisionDate\": \"2006-12-28T18:44:01.743Z\"\n        },\n        {\n          \"startDate\": \"01/20/2018\",\n          \"endDate\": \"02/20/2018\",\n          \"actualkWh\": \"389\",\n          \"meteredKW\": \"mollit sunt proident Lorem culpa\",\n          \"billedKW\": \"id esse anim i\",\n          \"meteredKVA\": \"pariatur labore tempor minim Lorem\",\n          \"billedKVA\": \"ea\",\n          \"revisionDate\": \"1993-11-17T06:14:46.529Z\"\n        }\n      ],\n      \"errorCode\": \"esse\",\n      \"errorMessage\": \"cillum sint est laboris\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/monthlybillingInformation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"monthlybillingInformation"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/energydatacallbackapi/v1",
+			"type": "string"
+		}
+	]
+}

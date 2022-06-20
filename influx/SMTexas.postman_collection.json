@@ -1,0 +1,642 @@
+{
+	"info": {
+		"_postman_id": "95d5d19b-39d3-43a2-9207-a4861864c5de",
+		"name": "SMTexas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9021681"
+	},
+	"item": [
+		{
+			"name": "15min Interval Data",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"111\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterType\": \"CSP\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"startDate\": \"05\\/18\\/2022\",\n  \"endDate\": \"05\\/28\\/2022\",\n  \"version\": \"L\",\n  \"readingType\": \"C\",  \n  \"SMTTermsandConditions\": \"Y\",\n  \"esiid\": [\n      \"10443720009477328\",\n      \"10443720008411300\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/15minintervalreads/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"15minintervalreads",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15min Interval Data ALL (?)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"111\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterType\": \"CSP\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"startDate\": \"05\\/18\\/2022\",\n  \"endDate\": \"05\\/19\\/2022\",\n  \"version\": \"L\",\n  \"readingType\": \"C\",  \n  \"SMTTermsandConditions\": \"Y\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/15minintervalreads/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"15minintervalreads",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Daily Register Reads",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"111\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterType\": \"CSP\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"startDate\": \"05\\/18\\/2022\",\n  \"endDate\": \"05\\/19\\/2022\",\n  \"version\": \"L\",\n  \"readingType\": \"C\",  \n  \"SMTTermsandConditions\": \"Y\",\n  \"esiid\": [\n      \"10443720009477328\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/dailyreads/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"dailyreads",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Monthly Billing Data",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"111\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterType\": \"CSP\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"startDate\": \"05\\/18\\/2021\",\n  \"endDate\": \"05\\/19\\/2021\",\n  \"version\": \"L\",\n  \"readingType\": \"C\",  \n  \"SMTTermsandConditions\": \"Y\",\n  \"esiid\": [\n      \"10443720009477328\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/monthlybillingInformation/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"monthlybillingInformation",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Green Button",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"GreenButtonRequest\":\n{               \n  \"trans_id\": \"1\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterType\": \"CSP\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"ESIID\": \"10443720009477328\",\n  \"startDate\": \"05\\/01\\/2021\",\n  \"endDate\": \"05\\/03\\/2021\",\n  \"reportType\": \"I\",\n  \"readingType\": \"C\",  \n  \"SMTTermsandConditions\": \"Y\"\n}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/greenbutton/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"greenbutton",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meter Attributes ONE",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"trans_id\": \"111\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterType\": \"CSP\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"version\": \"L\",\n  \"readingType\": \"C\",  \n  \"SMTTermsandConditions\": \"Y\",\n  \"ESIIDMeterList\": [\n    {\"esiid\": \"10443720009477328\"},\n    {\"esiid\": \"10443720006371323\"}\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/meterInfo/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"meterInfo",
+						""
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "/DataCustodian/espi/1_1/resource/Batch/Bulk/UF3JC5XCHPFSCY/",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "DataCustodian",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Premise Info (ONE)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"111\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterType\": \"CSP\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"startDate\": \"05\\/18\\/2022\",\n  \"endDate\": \"05\\/19\\/2022\",\n  \"version\": \"L\",\n  \"readingType\": \"C\",  \n  \"SMTTermsandConditions\": \"Y\",\n  \"esiid\": [\n      \"10443720009477328\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/premiseInfo/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"premiseInfo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "On-demand Read",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"111\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterType\": \"CSP\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"startDate\": \"05\\/18\\/2022\",\n  \"endDate\": \"05\\/19\\/2022\",\n  \"version\": \"L\",\n  \"deliveryMode\": \"EML\",\n  \"readingType\": \"C\",  \n  \"SMTTermsandConditions\": \"Y\",\n  \"ESIID\": \"10443720009477328\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/odr/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"odr",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Correlation Status",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"111\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"SMTTermsandConditions\": \"Y\",\n  \"serviceType\": \"ADHOC\",\n  \"correlationId\": \"4976e778da9411ec9e7f0a97\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/reportrequeststatus/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"reportrequeststatus",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Subscriptions",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"1A\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"reportFormat\": \"CSV\",\n  \"deliveryType\": \"FTP\",\n  \"status\": \"ACT\",\n  \"SMTTermsandConditions\": \"Y\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/Mysubscriptions/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"Mysubscriptions",
+						""
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "/DataCustodian/espi/1_1/resource/Batch/Bulk/UF3JC5XCHPFSCY/",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "DataCustodian",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List ESIIDs from AgreementNum",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"1A\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"agreementNumber\": \"747409\",\n  \"SMTTermsandConditions\": \"Y\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/AgreementESIIDs/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"AgreementESIIDs",
+						""
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "/DataCustodian/espi/1_1/resource/Batch/Bulk/UF3JC5XCHPFSCY/",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "DataCustodian",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all Agreements",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "685fvthrHD45328egje4",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "LEAPSMTDEV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{               \n  \"trans_id\": \"1A\",\n  \"requestorID\": \"LEAPSMTDEV\",\n  \"requesterAuthenticationID\":\"081024409\",\n  \"SMTTermsandConditions\": \"Y\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://services.smartmetertexas.net/myagreements/",
+					"protocol": "https",
+					"host": [
+						"services",
+						"smartmetertexas",
+						"net"
+					],
+					"path": [
+						"myagreements",
+						""
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "/DataCustodian/espi/1_1/resource/Batch/Bulk/UF3JC5XCHPFSCY/",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "DataCustodian",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
